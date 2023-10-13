@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Books</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f7f7f7;
+        }
+        .book-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .book-container form {
+            margin-right: 10px;
+        }
+        .book-container button.buy-button {
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+        }
+        .book-container button.buy-button:hover {
+            background-color: #2980b9;
+        }
+        .book-container button.disabled {
+            background-color: gray;
+            cursor: not-allowed;
+        }
+        
+        /* Styles for the "Reviews" button */
+        .book-container form button[type="submit"] {
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            background-color: #2ecc71;
+            color: #fff;
+            border: none;
+        }
+        .book-container form button[type="submit"]:hover {
+            background-color: #27ae60;
+        }
+
+        /* Styles for the "Show My Cart" button */
+        form[action="/carts/user"] button[type="submit"] {
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            background-color: #e67e22;
+            color: #fff;
+            border: none;
+        }
+        form[action="/carts/user"] button[type="submit"]:hover {
+            background-color: #d35400;
+        }
+    </style>
+</head>
+<body>
+    <h1>All Books</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Book Name</th>
+                <th>Author</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Iterate over the books and populate the table -->
+            <tr th:each="book : ${books}">
+                <td th:text="${book.id}"></td>
+                <td th:text="${book.bookname}"></td>
+                <td th:text="${book.author}"></td>
+                <td th:text="${book.price}"></td>
+                <td>
+                    <div class="book-container">
+                        <form action="/add-to-cart" method="post">
+                            <input type="hidden" name="bookId" th:value="${book.id}" />
+                            <input type="hidden" name="bookName" th:value="${book.bookname}" />
+                            <input type="hidden" name="bookPrice" th:value="${book.price}" />
+                            <button type="submit" class="buy-button">Add to Cart</button>
+                        </form>
+                        <form th:action="@{'/showReviews/' + ${book.id}}" method="get">
+                            <button type="submit">Reviews</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <form action="/carts/user" method="post">
+        <input type="hidden" name="userid" th:value="${session.loggedInUserId}" />
+        <button type="submit">Show My Cart</button>
+    </form>
+</body>
+</html>

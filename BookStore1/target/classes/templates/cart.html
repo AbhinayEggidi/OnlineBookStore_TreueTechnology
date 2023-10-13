@@ -1,0 +1,160 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Cart Details</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<h1>Cart Details</h1>-->
+
+<!-- Display cart details only when there are carts -->
+<!--<div th:if="${carts}">-->
+<!--    <h2>Cart Details for User ID: <span th:text="${userid}"></span></h2>-->
+
+<!--     Display cart details -->
+<!--    <table border="1">-->
+<!--        <thead>-->
+<!--        <tr>-->
+            
+<!--            <th>Book Name</th>-->
+<!--            <th>Price</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr th:each="cart : ${carts}">-->
+            
+<!--            <td th:text="${cart.bookname}"></td>-->
+<!--            <td th:text="${cart.price}"></td>-->
+<!--            <td>-->
+				
+<!--    <td>-->
+<!--                 Buy button -->
+<!--                <button th:id="'buyButton_' + ${cart.id}" th:onclick="'changeButtonText(\'' + ${cart.id} + '\')'">Buy</button>-->
+<!--            </td>-->
+<!--</td>-->
+<!--<td>-->
+<!--     Delete button -->
+<!--    <form th:action="@{'/delete/' + ${cart.id}}" method="post">-->
+<!--        <button type="submit">Delete</button>-->
+<!--    </form>-->
+<!--</td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
+<!--</div>-->
+
+<!-- <script>-->
+<!--    function changeButtonText(cartId) {-->
+<!--        var button = document.getElementById('buyButton_' + cartId);-->
+<!--        button.innerText = 'Bought';-->
+<!--        button.disabled = true;-->
+<!--        button.style.backgroundColor = 'gray';-->
+
+<!--        // Reload the page after a delay (e.g., 2 seconds)-->
+<!--        setTimeout(function () {-->
+<!--            window.location.reload();-->
+<!--        }, 2000);-->
+<!--    }-->
+<!--</script>-->
+
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        h2 {
+            color: #555;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f7f7f7;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 14px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        button[disabled] {
+            background-color: gray;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Cart Details</h1>
+
+<!-- Display cart details only when there are carts -->
+<div th:if="${carts}">
+    <h2>Cart Details for User ID: <span th:text="${userid}"></span></h2>
+
+    <!-- Display cart details -->
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Book Name</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="cart : ${carts}">
+            <td th:text="${cart.bookname}"></td>
+            <td th:text="${cart.price}"></td>
+            <td>
+                <!-- Buy button -->
+                <button th:id="'buyButton_' + ${cart.id}" th:onclick="'changeButtonText(\'' + ${cart.id} + '\')'">Buy</button>
+             <br>
+             <br>
+                <!-- Delete button -->
+                <form th:action="@{'/delete/' + ${cart.id}}" method="post">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function changeButtonText(cartId) {
+        var button = document.getElementById('buyButton_' + cartId);
+        button.innerText = 'Bought';
+        button.disabled = true;
+    }
+</script>
+
+</body>
+</html>

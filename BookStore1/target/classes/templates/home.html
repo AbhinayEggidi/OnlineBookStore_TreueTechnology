@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .button-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 0 10px;
+        }
+        .register-button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .register-button:hover {
+            background-color: #2980b9;
+        }
+        .login-button {
+            background-color: #2ecc71;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .login-button:hover {
+            background-color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Bookstore</h1>
+    <div class="button-container">
+        <button class="register-button" onclick="redirectToRegister()">Register</button>
+        <button class="login-button" onclick="redirectToLogin()">Login</button>
+    </div>
+
+    <script>
+        function redirectToRegister() {
+            window.location.href = "/register";  // Replace with the actual registration page URL
+        }
+
+        function redirectToLogin() {
+            window.location.href = "/login";  // Replace with the actual login page URL
+        }
+    </script>
+</body>
+</html>

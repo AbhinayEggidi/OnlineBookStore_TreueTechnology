@@ -1,0 +1,14 @@
+A:\SpringBoot\BookStore1\src\main\java\com\example\bookstore\entity\Book.java
+A:\SpringBoot\BookStore1\src\main\java\com\example\bookstore\repository\ReviewRepository.java
+A:\SpringBoot\BookStore1\src\main\java\com\example\bookstore\service\CartService.java
+A:\SpringBoot\BookStore1\src\main\java\com\example\bookstore\BookStore1Application.java
+A:\SpringBoot\BookStore1\src\main\java\com\example\bookstore\repository\BookRepository.java
+A:\SpringBoot\BookStore1\src\main\java\com\example\bookstore\entity\Review.java
+A:\SpringBoot\BookStore1\src\main\java\com\example\bookstore\repository\UserRepository.java
+A:\SpringBoot\BookStore1\src\main\java\com\example\bookstore\repository\CartRepository.java
+A:\SpringBoot\BookStore1\src\main\java\com\example\bookstore\entity\Cart.java
+A:\SpringBoot\BookStore1\src\main\java\com\example\bookstore\entity\User.java
+A:\SpringBoot\BookStore1\src\main\java\com\example\bookstore\service\BookService.java
+A:\SpringBoot\BookStore1\src\main\java\com\example\bookstore\service\ReviewService.java
+A:\SpringBoot\BookStore1\src\main\java\com\example\bookstore\service\UserService.java
+A:\SpringBoot\BookStore1\src\main\java\com\example\bookstore\controller\UserController.java
